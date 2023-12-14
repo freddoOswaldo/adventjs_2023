@@ -6,9 +6,10 @@ Un regalo se puede fabricar si contamos con todos los materiales necesarios para
  */
 
 function manufacture (gifts, materials) {
-  return gifts.map(gift => {
-    const giftsSeparate = gift.split('')
-    return giftsSeparate.every(letter => materials.includes(letter))
+  const materialsSet = new Set(materials);
+  return gifts.filter(gift => {
+    const giftsSeparate = [...gift]
+    return giftsSeparate.every(letter => materialsSet.has(letter))
   })
 }
 
